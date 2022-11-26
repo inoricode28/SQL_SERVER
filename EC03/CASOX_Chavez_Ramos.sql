@@ -1,0 +1,134 @@
+xp_create_subdir "C:\BD_testing_2021" -- Crear carpeta
+CREATE DATABASE ASPEAR_2021 -- Pruebas Nombre base de datos
+ON PRIMARY -------- Configuración del archivo maestro
+(NAME = ASPEAR_2021, -- Nombre BD tipo de archivo maestro
+FILENAME = 'C:\BD_testing_2021\CASOX_CHAVEZ_RAMOS.mdf', -- Ruta física
+SIZE = 5MB, ------- Tamaño x bloque
+MAXSIZE = UNLIMITED, -- Especificación del tamaño máximo
+FILEGROWTH = 2048KB) --Incremento KB,MB,GB,TB....%
+
+LOG ON -------- Configuracion del archivo lógico
+(NAME = ASPEAR_2021_log, --Nombre del tipo de archivo lógico
+FILENAME = 'C:\BD_testing_2021\CASOX_CHAVEZ_RAMOS.ldf', -- Ruta física
+SIZE = 2048KB, ----- Tamaño x bloque
+MAXSIZE = UNLIMITED,-- Especificación del tamaño máximo
+FILEGROWTH = 12%) -- Incremento KB,MB,GB,TB....%
+GO
+
+USE ASPEAR_2021
+GO
+
+CREATE TABLE TBL_CLIENTE(
+    DNI     VARCHAR(8) NOT NULL PRIMARY KEY,
+    NOMBRES    VARCHAR(100) NOT NULL,
+    DIRECCION   VARCHAR(150) NULL,
+    TELEFONO    VARCHAR(10) NULL
+)
+GO
+
+CREATE TABLE TBL_MECANICO (
+    CODIGO VARCHAR(8) NOT NULL PRIMARY KEY,
+    NOMBRE VARCHAR(100) NOT NULL,
+    TELEFONO    VARCHAR(10) NULL,
+    ESPECIALIDAD    VARCHAR(50) NOT NULL,
+    FINGRESO    DATETIME NOT NULL,
+    DISPONIBILIDAD  CHAR(2)
+)
+GO
+
+CREATE TABLE TBL_RT_VEHICULO (
+    REGISTRO INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    MATRICULA VARCHAR(7) NOT NULL,
+    CODIGO    VARCHAR(8) FOREIGN KEY REFERENCES TBL_MECANICO(CODIGO),
+    DNI     VARCHAR(8) FOREIGN KEY REFERENCES TBL_CLIENTE(DNI),
+    MODELO  VARCHAR(30) NOT NULL,
+    COLOR    VARCHAR(15) NOT NULL,
+    FHingreso   DATETIME NOT NULL
+)
+GO
+
+CREATE TABLE TBL_HOJA_DE_PARTE (
+    NUMERO_PARTE INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    REGISTRO    INT FOREIGN KEY REFERENCES TBL_RT_VEHICULO(REGISTRO),
+    DESCUENTO   DECIMAL(10,2) NOT NULL,
+    IGV   DECIMAL(10,2) NOT NULL,
+    TOTAL   DECIMAL(10,2) NOT NULL
+)
+GO
+
+CREATE TABLE TBL_PRODUCTOS_SERVICIOS (
+    CODIGO  INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    DESCRIPCION VARCHAR(100) NOT NULL,
+    STOCK    INT NOT NULL,
+    PRECIO  DECIMAL(10,2) NOT NULL,
+    TIPO    VARCHAR(100) NOT NULL,
+)
+GO
+
+CREATE TABLE TBL_PS_HP (
+    NUMERO_PARTE    INT FOREIGN KEY REFERENCES TBL_HOJA_DE_PARTE(NUMERO_PARTE),
+    CODIGO_MEC      VARCHAR(8) NOT NULL,
+    CODIGO          INT FOREIGN KEY REFERENCES TBL_PRODUCTOS_SERVICIOS(CODIGO),
+    CANTIDAD        INT NOT NULL,
+    PRECIO          DECIMAL(10,2) NOT NULL
+)
+GO
+
+CREATE TABLE TBL_FACTURA (
+    NUMERO_FACTURA INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    NUMERO_PARTE    INT FOREIGN KEY REFERENCES TBL_HOJA_DE_PARTE(NUMERO_PARTE),
+    DESCUENTO   DECIMAL(10,2) NOT NULL, 
+    IGV   DECIMAL(10,2) NOT NULL,
+    TOTAL_SOLES   DECIMAL(10,2) NOT NULL,
+    TIPO_CAMBIO   DECIMAL(10,2) NOT NULL,
+    TOTAL_DOLARES   DECIMAL(10,2) NOT NULL
+)
+GO
+
+CREATE TABLE TBL_DETALLE_FACTURA (
+    NUMERO_FACTURA INT FOREIGN KEY REFERENCES TBL_FACTURA(NUMERO_FACTURA),
+    CODIGO INT NOT NULL,
+    CANTIDAD        INT NOT NULL,
+    PRECIO          DECIMAL(10,2) NOT NULL,
+    SUBTOTAL   DECIMAL(10,2) NOT NULL
+)
+GO
+
+INSERT INTO TBL_CLIENTE VALUES ('12345678', 'Ana Maria Robles Ramirez', 'Av. Lima 566', '927456789'),
+							   ('44854610', 'Pepe Akiro Gonzales Perez', 'Av. SJM 999', '94422089'),
+                               ('45813210', 'Jose Torrealba Alba', 'Av. El Sol 333', '900456119'),
+                               ('98745129', 'Daniela Lamas Ruiz', 'Av. Surco 777', '927056709')
+GO
+
+INSERT INTO TBL_MECANICO VALUES ('40824210', 'Ana Rojas', '980001428', 'Electricidad', '2021-09-15', 'SI'),
+							    ('90000200', 'Pepe Huertas', '982301241', 'Mecanica', '2021-08-01', 'NO'),
+							    ('98765432', 'Jorge Gallegos', '', 'Planchado', '2021-12-11', 'SI')
+GO
+
+INSERT INTO TBL_PRODUCTOS_SERVICIOS VALUES ('Pastilla de Frenos Nakuma', '556', '159.99', 'Producto'),
+										   ('Bomba de gasolina Xterm Toyota', '1230', '450.12', 'Producto'),
+										   ('Cambio de aceite Auto Sedan', '0', '99.99', 'Servicio'),
+										   ('Inyectores GAMZ Racer Daewoo', '566', '56.60', 'Producto'),
+										   ('Cambio de frenos Auto Sedan x llanta', '0', '59.99', 'Servicio'),
+										   ('Orriles para intectores Auto Sedan', '1566', '8.99', 'Producto')
+GO
+
+INSERT INTO TBL_RT_VEHICULO VALUES ('ABC-123', '98765432', '12345678', 'Yaris', 'Rojo', '2021-11-20 17:17:07'),
+								   ('BBB-666', '40824210', '44854610', 'Sentra', 'Verde', '2021-11-20 17:17:07')
+GO
+
+INSERT INTO TBL_HOJA_DE_PARTE VALUES ('1', '0.00', '59.99', '120.00'),
+									 ('2', '0.00', '59.99', '120.00')
+GO
+
+INSERT INTO TBL_PS_HP VALUES ('1', '98765432', '5', '2', '59.99'),
+							 ('2', '40824210', '5', '2', '59.99')
+GO
+
+INSERT INTO TBL_FACTURA VALUES ('1', '0.00', '5.99', '120.00', '4.10', '480.00'),
+						       ('2', '0.00', '5.99', '120.00', '4.10', '480.00')
+GO
+
+INSERT INTO TBL_DETALLE_FACTURA VALUES ('1', '1', '2', '59.99', '120.00'),
+									   ('2', '2', '2', '59.99', '120.00')
+GO
