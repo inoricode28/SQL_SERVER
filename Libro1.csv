@@ -1,0 +1,41 @@
+CODIGO,DESCRIPCION,MARCA,CATEGORIA,STOCK,PRECIO,FINGRESO
+1,Teclado Mouse - Combo Multimedia,GENIUS,Perifericos,1230,30,07/07/2015
+2,Cooler MasterAir 100M Cool Master,COOL MASTER,Disp. Enfriamiento,1999,72.99,01/09/2016
+3,Microfono de solapa ,MAONO,Perifericos,1301,55.99,01/07/2016
+4,Headset Gaming - Multimedia,MICRONICS,Perifericos,111,59.99,12/07/2015
+5,Teclado Mouse - Combo Multimedia,MICROSOFT,Perifericos,101,60.3,07/12/2018
+6,Memoria Ram DDR4 3000 Mhz 16GB,GSKILL,Memorias RAM,899,143.99,30/09/2016
+7,Procesador Ryzen 2600g,AMD,Procesador,130,99.99,07/05/2018
+8,Case Mid Tower ROG Strix  Asus,ASUS,Case ,340,100,02/02/2018
+9,Motherboard B450 AOURUS ,ASUS,Tarjeta Madre,1241,200.5,12/12/2019
+10,Procesador Core I3 9400k,INTEL,Procesador,4241,350.99,12/05/2018
+11,Microfono Cardioide Au-902,MAONO,Perifericos,1801,400.99,18/01/2019
+12,Motherboard Z490,GIGABYTE,Tarjeta Madre,1200,530.99,12/12/2019
+13,Disco SSD 2.5 S3  1TB  BX500,CRUCIAL,Almacenamiento,4000,129.99,01/08/2017
+14,Headset Gaming - Multimedia,GENIUS,Perifericos,981,99.99,07/07/2017
+15,Laptop Msi Bravo 16GB AMD Ryzen 3400x,MSI,Laptop,1000,5000,29/01/2020
+16,Cooler Hyper T20 Cool Master,COOL MASTER,Disp. Enfriamiento,2500,56.96,01/04/2016
+17,Impresora Multifuncional Brother DCP-T910DW,BROTHER,Impresora,1800,368,20/01/2019
+18,Case Full Tower Dark-Blader Cougar,COUGAR,Case ,600,145.22,31/03/2016
+19,Procesador Core I3 9900k,INTEL,Procesador,3241,400,12/05/2019
+20,Disco Duro 2.5 S3  1TB Barracuda,SEAGATE,Almacenamiento,1500,62,02/01/2019
+21,Memoria Ram 4000 Mhz 32GB,CRUCIAL,Memorias RAM,5000,311,10/11/2019
+22,Monitor 27 MZ279HL IPS FHD,ASUS,Monitores,2099,270.99,10/12/2019
+23,Disco SSD 2.5 S3  1TB  Red NAS,WESTERN DIGITAL,Almacenamiento,3340,212,12/06/2015
+24,Procesador Ryzen 3900x,AMD,Procesador,1999,666,22/12/2019
+25,Teclado Mouse - DEVASTATOR3  7CLR,COOL MASTER,Perifericos,4033,37.99,18/09/2016
+26,Disco SSD SATA M.2  SU650 480 GB,ADATA,Almacenamiento,1500,70,18/02/2017
+27,Memoria Ram SODIMM DDR3 4GB 1600,KINGSTON,Memorias RAM,258,30.59,16/01/2017
+28,Impresora Multifuncional Epson Photo L850,EPSON,Impresora,3000,689.99,15/09/2018
+29,Impresora Termica Ticket SRP 350 USB,BIXOLON,Impresora,2222,199.99,31/07/2019
+30,Procesador Ryzen 3600g,AMD,Procesador,2130,150,12/05/2018
+31,Disco SSD SATA M.2 120 GB,KINGSTON,Almacenamiento,1200,28,01/04/2010
+32,Disco Duro 3.5 M4  1TB Barracuda,SEAGATE,Almacenamiento,2000,88.99,06/06/2018
+33,Monitor 20 E2016H VGA,DELL,Monitores,5311,110,01/03/2015
+34,Disco SSD SATA M.2 240 GB,KINGSTON,Almacenamiento,1800,41.99,01/04/2010
+35,Teclado Mouse Gaming GC-1500,ANTRYX,Perifericos,5234,35.99,01/12/2010
+36,Antivirus BITDEFENDER PLUS 2019,BITDEFENDER,Software,1899,20,01/12/2019
+37,Monitor 27 SW271 IPS UHD ADOBE SRGB,BENQ,Monitores,3600,1420,01/06/2018
+38,Botella tinta EPSON 504 T504120 Black,EPSON,Insumos Impresora,8000,11.99,02/02/2017
+39,Memoria Ram DDR4 3200 Mhz 8GB,HYPER FURY,Memorias RAM,2899,66,01/04/2019
+40,Tablet PC7 Tegra Note 7,EVGA,Tablet,1211,199.99,06/08/2018
